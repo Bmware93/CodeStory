@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct EnchantedDoor {
+            
+struct EnchantedDoor: Equatable {
     var color: EnchantedDoors
-    var hasBagOfMoney: Bool
 }
 
-
+//Function that prompts user for their name
 func getCharacterName() -> String {
     print("Please enter your character's name: ")
     let characterName = readLine()?.capitalized
@@ -23,6 +23,7 @@ func getCharacterName() -> String {
     return characterName ?? "Luke"
 }
 
+//Function that prompts user to name the town in the story
 func getTownName() -> String {
     print("Please enter the name of the mystical town you are exploring: ")
     let townName = readLine()?.capitalized
@@ -36,6 +37,7 @@ func getTownName() -> String {
     return townName
 }
 
+//Function that gives the type-writer effect to the print statements
 func printSlow(_ text: String, delay: TimeInterval = 0.11) {
     for char in text {
         print(char, terminator: "")
@@ -46,9 +48,11 @@ func printSlow(_ text: String, delay: TimeInterval = 0.11) {
 }
 
 
-func startStory() {
+func tellStory() {
     let name = getCharacterName()
     let town = getTownName()
+    let hasBagOfMoney = Bool.random()
+   
     
     print("------------------------------------------------------")
     
@@ -68,13 +72,28 @@ func startStory() {
     doorDescription(describingDoor: .sapphireBlueDoor, name: name, town: town)
     doorDescription(describingDoor: .emeraldGreenDoor, name: name, town: town)
     
+    print("------------------------------------------------------")
+    
     storyMiddle(name: name, town: town)
+    
+    print("------------------------------------------------------")
+    
+    guard let userSelectedDoor = chooseDoor(name: name, town: town) else { return }
+    
+    print("------------------------------------------------------")
+    
+    redDoorChoice(for: userSelectedDoor, name: name, town: town, hasBagOfMoney: hasBagOfMoney)
+    
+    blueDoorChoice(for: userSelectedDoor, name: name, town: town, hasBagOfMoney: hasBagOfMoney)
+    
+    greenDoorChoice(for: userSelectedDoor, name: name, town: town, hasBagOfMoney: hasBagOfMoney)
+    
 }
 
 enum EnchantedDoors: String, CaseIterable {
-    case rubyRedDoor = "Ruby Red Door"
-    case sapphireBlueDoor = "Sapphire Blue Door"
-    case emeraldGreenDoor = "Emerald Green Door"
+    case rubyRedDoor = "The Door of Ruby Red"
+    case sapphireBlueDoor = "The Door of Sapphire Blue"
+    case emeraldGreenDoor = "The Door of Emerald Green"
 }
 
 func doorDescription(describingDoor: EnchantedDoors, name: String, town: String) {
@@ -108,25 +127,92 @@ func storyMiddle(name: String, town: String) {
     printSlow("For behind two of the doors lay traps, and behind the third, the path to the hidden bag of money.")
     printSlow("The townsfolk often wondered who would be the one to unlock the riddle and claim the riches of \(town).")
     printSlow("Will it be you?")
+    
+    printSlow("Your time has come to choose. Which door will \(name) pick?")
 }
 
-func chooseDoor(name: String, town: String) {
-    printSlow("Your time has come to choose. Which door will \(name) pick?")
-    
-    print("Please enter your choice: (Ruby Red Door, Sapphire Blue Door or Emerald Green Door).")
-    let userDoorChoice = readLine()?.capitalized
-    
-    guard let userDoorChoice else {
+func redDoorChoice( for enchantedDoor: EnchantedDoor, name: String, town: String, hasBagOfMoney: Bool) {
+    let redDoor = EnchantedDoor(color: .rubyRedDoor)
+   
+    if enchantedDoor != redDoor {
         return
-    }
-    if userDoorChoice.localizedCaseInsensitiveContains("red") {
-      var redDoor = EnchantedDoor(color: .rubyRedDoor, hasBagOfMoney: Bool.random())
+    } else if hasBagOfMoney {
+            printSlow("\(name) slowly turns the knob and enters the Door of Ruby Red...")
+            printSlow("As they stepped inside, the room was filled with the intoxicating scent of roses.")
+            printSlow("As \(name) wandered among the petals, they discovered bags of glittering coins hidden among the blooms, the treasure of \(town). ")
+            
+        } else {
+            printSlow("The roses concealed no treasure, only danger, and a tangle of thorns that ensnared them, leaving them battered and disheartened. \(name) has left with scratches and bruises, having missed the riches that remained tantalizingly out of reach.")
+        }
+    
+}
+
+
+func blueDoorChoice( for enchantedDoor: EnchantedDoor, name: String, town: String, hasBagOfMoney: Bool) {
+    let blueDoor = EnchantedDoor(color: .sapphireBlueDoor)
+   
+    if enchantedDoor != blueDoor {
+        return
+    } else if hasBagOfMoney {
+            printSlow("\(name) slowly turns the knob and enters the Door of Sapphire Blue...")
+            printSlow("As they stepped inside, the room was filled with the intoxicating scent of roses.")
+            printSlow("As \(name) wandered among the petals, they discovered bags of glittering coins hidden among the blooms, the treasure of \(town). ")
+            
+        } else {
+            printSlow("The roses concealed no treasure, only danger, and a tangle of thorns that ensnared them, leaving them battered and disheartened. \(name) has left with scratches and bruises, having missed the riches that remained tantalizingly out of reach.")
+        }
+    
+}
+
+
+func greenDoorChoice( for enchantedDoor: EnchantedDoor, name: String, town: String, hasBagOfMoney: Bool) {
+    let greenDoor = EnchantedDoor(color: .emeraldGreenDoor)
+   
+    if enchantedDoor != greenDoor {
+        return
+    } else if hasBagOfMoney {
+            printSlow("\(name) slowly turns the knob and enters the Door of Emerald Green...")
+            printSlow("As they stepped inside, the room was filled with the intoxicating scent of roses.")
+            printSlow("As \(name) wandered among the petals, they discovered bags of glittering coins hidden among the blooms, the treasure of \(town). ")
+            
+        } else {
+            printSlow("The roses concealed no treasure, only danger, and a tangle of thorns that ensnared them, leaving them battered and disheartened. \(name) has left with scratches and bruises, having missed the riches that remained tantalizingly out of reach.")
+        }
+    
+}
+
+
+func chooseDoor(name: String, town: String) -> EnchantedDoor? {
+    var chosenDoor: EnchantedDoor?
+    
+    //Prompt repeats until user selects a red, blue or green door
+    while chosenDoor == nil {
+        
+        print("Please enter your choice: (The Door of Ruby Red, The Door of Sapphire Blue or The Door of Emerald Green).")
+        let userSelection = readLine()
+        
+        guard let userSelection else {
+            return EnchantedDoor(color: .allCases.randomElement()!)
+        }
+        if userSelection.isEmpty {
+            return EnchantedDoor(color: .allCases.randomElement()!)
+            
+        } else if userSelection.localizedCaseInsensitiveContains("red") {
+            chosenDoor = EnchantedDoor(color: .rubyRedDoor)
+        } else if userSelection.localizedCaseInsensitiveContains("blue") {
+            chosenDoor = EnchantedDoor(color: .sapphireBlueDoor)
+        } else if userSelection.localizedCaseInsensitiveContains("green") {
+            chosenDoor = EnchantedDoor(color: .emeraldGreenDoor)
+        } else {
+            print("You've entered an invalid option")
+        }
     }
  
+      return chosenDoor
 }
 
 
-startStory()
+tellStory()
 
 
 
