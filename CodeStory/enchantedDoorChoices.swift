@@ -68,6 +68,7 @@ func blueDoorChoice( for enchantedDoor: EnchantedDoor, name: String, town: Strin
             printSlow("The glimmering coins seemed like a gift from the ocean itself, rewarding those with the courage to dive deep.")
             printSlow("\(name) emerged as a prosperous explorer, having discovered the treasure's hiding place! ")
           
+        
             
         } else {
             printSlow("\(name) slowly turns the knob and enters the Door of Sapphire Blue...")
@@ -96,3 +97,21 @@ func greenDoorChoice( for enchantedDoor: EnchantedDoor, name: String, town: Stri
             printSlow("\(name) emerged from the woods, having learned that the pursuit of wealth isn't always straightforward and that some treasures can't be taken but must be earned through wisdom and perseverance.")
         }
     }
+
+//Allows user to repick and choose another door
+func chooseAnotherDoor(name: String, town: String) -> Bool {
+    print("Would you like to choose another door? Please enter Yes or No.")
+    let userInput = readLine()
+    
+    guard let userInput else {
+        return false
+    }
+    if userInput.isEmpty {
+        return false
+    } else if userInput.localizedCaseInsensitiveContains("y") {
+       return true
+    } else if userInput.localizedCaseInsensitiveContains("n") {
+        return false
+    }
+    return false
+}

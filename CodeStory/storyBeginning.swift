@@ -37,6 +37,7 @@ func doorDescription(describingDoor: EnchantedDoors, name: String, town: String)
         print("------------------------------------------------------")
         
     case .emeraldGreenDoor:
+        
         printSlow("The Door of Emerald Green beckoned with its vibrant, earthy allure.")
         printSlow("Legend says that some were greeted by a wise old tree who bestowed upon them the riches of \(town).")
         printSlow("Will \(name) venture within and find themselves in a lush, green forest that leaves their pockets filled with gold and heart filled with gratitude?")
