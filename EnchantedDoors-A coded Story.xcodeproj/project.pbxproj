@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A364C852AEAE586002DA4B9 /* storyBeginning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A364C842AEAE586002DA4B9 /* storyBeginning.swift */; };
+		1A364C872AEAE61D002DA4B9 /* storySetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A364C862AEAE61D002DA4B9 /* storySetup.swift */; };
+		1A364C8B2AEAEF50002DA4B9 /* enchantedDoorChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A364C8A2AEAEF50002DA4B9 /* enchantedDoorChoices.swift */; };
 		1A9660542ADDB71800993C7D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9660532ADDB71800993C7D /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +26,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A364C842AEAE586002DA4B9 /* storyBeginning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storyBeginning.swift; sourceTree = "<group>"; };
+		1A364C862AEAE61D002DA4B9 /* storySetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storySetup.swift; sourceTree = "<group>"; };
+		1A364C8A2AEAEF50002DA4B9 /* enchantedDoorChoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enchantedDoorChoices.swift; sourceTree = "<group>"; };
 		1A9660502ADDB71800993C7D /* EnchantedDoors-A coded Story */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "EnchantedDoors-A coded Story"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A9660532ADDB71800993C7D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				1A9660532ADDB71800993C7D /* main.swift */,
+				1A364C862AEAE61D002DA4B9 /* storySetup.swift */,
+				1A364C842AEAE586002DA4B9 /* storyBeginning.swift */,
+				1A364C8A2AEAEF50002DA4B9 /* enchantedDoorChoices.swift */,
 			);
 			path = CodeStory;
 			sourceTree = "<group>";
@@ -121,6 +130,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A9660542ADDB71800993C7D /* main.swift in Sources */,
+				1A364C852AEAE586002DA4B9 /* storyBeginning.swift in Sources */,
+				1A364C8B2AEAEF50002DA4B9 /* enchantedDoorChoices.swift in Sources */,
+				1A364C872AEAE61D002DA4B9 /* storySetup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
