@@ -8,7 +8,6 @@
 import Foundation
 
             
-
 tellStory()
 
 //Function that runs the full story
@@ -52,9 +51,9 @@ func tellStory() {
     //User is able to choose another door is they did not find the money
     if !hasBagOfMoney {
         
-        hasBagOfMoney = .random()
-        
         var userWantsToChooseNewDoor = chooseAnotherDoor(name: name, town: town)
+        
+        hasBagOfMoney = .random()
         
         while userWantsToChooseNewDoor {
             guard let userNewChoice = chooseDoor(name: name, town: town) else {
@@ -70,11 +69,6 @@ func tellStory() {
            
         }
     }
-    
-  
-    
-    
-
 }
 
 

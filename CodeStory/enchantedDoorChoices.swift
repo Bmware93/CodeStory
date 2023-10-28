@@ -33,7 +33,6 @@ func chooseDoor(name: String, town: String) -> EnchantedDoor? {
             print("You've entered an invalid option")
         }
     }
- 
       return chosenDoor
 }
 
