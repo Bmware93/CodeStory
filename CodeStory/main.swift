@@ -38,7 +38,7 @@ func tellStory() {
     
     print("------------------------------------------------------")
     
-    guard let userSelectedDoor = chooseDoor(name: name, town: town) else { return }
+    guard let userSelectedDoor = chooseDoor() else { return }
     
     print("------------------------------------------------------")
     
@@ -51,12 +51,14 @@ func tellStory() {
     //User is able to choose another door is they did not find the money
     if !hasBagOfMoney {
         
-        var userWantsToChooseNewDoor = chooseAnotherDoor(name: name, town: town)
         
-        hasBagOfMoney = .random()
-        
-        while userWantsToChooseNewDoor {
-            guard let userNewChoice = chooseDoor(name: name, town: town) else {
+        while !hasBagOfMoney {
+            
+            var userWantsToChooseNewDoor = chooseAnotherDoor()
+            
+            hasBagOfMoney = .random()
+            
+            guard let userNewChoice = chooseDoor() else {
                 return
             }
             redDoorChoice(for: userNewChoice, name: name, town: town, hasBagOfMoney: hasBagOfMoney)

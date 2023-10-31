@@ -8,7 +8,7 @@
 import Foundation
 
 
-func chooseDoor(name: String, town: String) -> EnchantedDoor? {
+func chooseDoor() -> EnchantedDoor? {
     var chosenDoor: EnchantedDoor?
     
     //Prompt repeats until user selects a red, blue or green door
@@ -98,7 +98,7 @@ func greenDoorChoice( for enchantedDoor: EnchantedDoor, name: String, town: Stri
     }
 
 //Allows user to repick and choose another door
-func chooseAnotherDoor(name: String, town: String) -> Bool {
+func chooseAnotherDoor() -> Bool {
     print("Would you like to choose another door? Please enter Yes or No.")
     let userInput = readLine()
     
