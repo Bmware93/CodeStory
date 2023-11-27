@@ -39,7 +39,7 @@ func getTownName() -> String {
 
 //Function that gives the type-writer effect to the print statements
 //You can adjust the time interval to speed the story up or down
-func printSlow(_ text: String, delay: TimeInterval = 0.011) {
+func printSlow(_ text: String, delay: TimeInterval = 0.11) {
     for char in text {
         print(char, terminator: "")
      

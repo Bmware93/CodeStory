@@ -19,7 +19,7 @@ func tellStory() {
     
     let name = getCharacterName()
     let town = getTownName()
-    var hasBagOfMoney = Bool.random()
+    var hasBagOfMoney = false
     
    
     print("------------------------------------------------------")
@@ -48,29 +48,27 @@ func tellStory() {
     
     greenDoorChoice(for: userSelectedDoor, name: name, town: town, hasBagOfMoney: hasBagOfMoney)
     
-    //User is able to choose another door is they did not find the money
-    if !hasBagOfMoney {
-        
+    //User is able to choose another door if they did not find the money
         
         while !hasBagOfMoney {
             
-            var userWantsToChooseNewDoor = chooseAnotherDoor()
+            print("------------------------------------------------------")
             
-            hasBagOfMoney = .random()
+            let userWantsToChooseNewDoor = chooseAnotherDoor()
             
-            guard let userNewChoice = chooseDoor() else {
-                return
+            if userWantsToChooseNewDoor {
+                hasBagOfMoney = .random()
+                
+                guard let userNewChoice = chooseDoor() else {
+                    return
+                }
+                redDoorChoice(for: userNewChoice, name: name, town: town, hasBagOfMoney: hasBagOfMoney)
+                blueDoorChoice(for: userNewChoice, name: name, town: town, hasBagOfMoney: hasBagOfMoney)
+                greenDoorChoice(for: userNewChoice, name: name, town: town, hasBagOfMoney: hasBagOfMoney)
             }
-            redDoorChoice(for: userNewChoice, name: name, town: town, hasBagOfMoney: hasBagOfMoney)
-            blueDoorChoice(for: userNewChoice, name: name, town: town, hasBagOfMoney: hasBagOfMoney)
-            greenDoorChoice(for: userNewChoice, name: name, town: town, hasBagOfMoney: hasBagOfMoney)
-            
-            if hasBagOfMoney {
-                userWantsToChooseNewDoor.toggle()
-            }
-           
+           return
         }
-    }
+
 }
 
 
